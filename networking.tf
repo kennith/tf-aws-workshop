@@ -1,8 +1,3 @@
-provider "aws" {
-  profile = "sandbox"
-  region  = "us-east-1"
-}
-
 resource "aws_vpc" "main" {
   cidr_block = "10.1.0.0/16"
 
@@ -55,16 +50,5 @@ resource "aws_subnet" "public" {
 
   tags = {
     Name = "Public"
-  }
-}
-
-resource "aws_instance" "aws-linux-2" {
-  ami           = "ami-09d95fab7fff3776c"
-  instance_type = "t2.medium"
-
-  subnet_id = aws_subnet.public.id
-
-  tags = {
-    "Name" = "Amazon Linux 2"
   }
 }
